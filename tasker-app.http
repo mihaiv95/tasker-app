@@ -1,0 +1,6 @@
+@tasker_app_HostAddress = http://localhost:5070
+
+GET {{tasker_app_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

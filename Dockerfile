@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
+RUN mkdir ./Resources
 EXPOSE 5070
 EXPOSE 7221
 

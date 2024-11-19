@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Http;
+using Microsoft.OpenApi.Models;
 
 namespace tasker_app
 {
@@ -32,6 +33,7 @@ namespace tasker_app
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOpenApi();
             services.AddCors();
             services.AddAutoMapper(typeof(Startup));
             string connectorString = Configuration.GetConnectionString("WebApiDatabase");
@@ -85,8 +87,8 @@ namespace tasker_app
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapOpenApi(); // Add this line to map OpenAPI
             });
-
             
         }
     }

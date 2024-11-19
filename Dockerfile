@@ -1,8 +1,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
-EXPOSE 5000
-
-ENV ASPNETCORE_URLS=http://*:5000
+EXPOSE 5070
+EXPOSE 7221
 
 USER app
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0 AS build
@@ -21,4 +20,4 @@ RUN dotnet publish "tasker-app.csproj" -c $configuration -o /app/publish /p:UseA
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "--info"]
+ENTRYPOINT ["dotnet", "tasker-app.dll"]

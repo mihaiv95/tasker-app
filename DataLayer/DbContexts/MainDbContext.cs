@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using tasker_app.Models.User;
 using tasker_app.DataLayer.Utils;
 using tasker_app.Models;
+using BC = BCrypt.Net.BCrypt;
 
 namespace tasker_app.DBContexts
 {
@@ -30,8 +31,8 @@ namespace tasker_app.DBContexts
                 .HasValue<AdminUser>(UserType.AdminUser);
 
             modelBuilder.Entity<AdminUser>()
-                .Property(b => b.FirstName)
-                .HasColumnName("FirstName");
+                    .Property(b => b.FirstName)
+                    .HasColumnName("FirstName");
 
 
             #endregion
